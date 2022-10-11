@@ -7,7 +7,7 @@ concurrency:
 on:
   push:
     branches:
-      - main
+      - ghc-9.4
   pull_request:
     branches:
       - main
@@ -22,35 +22,6 @@ jobs:
         os:
           - ubuntu-18.04
         ghc:
-          - 8.0.2
-          - 8.2.2
-          - 8.4.1
-          - 8.4.2
-          - 8.4.3
-          - 8.4.4
-          - 8.6.1
-          - 8.6.2
-          - 8.6.3
-          - 8.6.4
-          - 8.6.5
-          - 8.8.1
-          - 8.8.2
-          - 8.8.3
-          - 8.8.4
-          - 8.10.1
-          - 8.10.2
-          - 8.10.3
-          - 8.10.4
-          - 8.10.5
-          - 8.10.6
-          - 8.10.7
-          - 9.0.1
-          - 9.0.2
-          - 9.2.1
-          - 9.2.2
-          - 9.2.3
-          - 9.2.4
-          - 9.4.1
           - 9.4.2
         include:
           - os: macos-latest
@@ -66,9 +37,6 @@ jobs:
       - run: cabal update
       - run: cabal configure --enable-tests --enable-benchmarks
       - run: cabal build all
-      - run: cabal exec -- cabal test all --test-show-details=direct
-        env:
-          HSPEC_OPTIONS: --color
       - run: cabal exec -- cabal repl --with-ghc=doctest
 
   success:
