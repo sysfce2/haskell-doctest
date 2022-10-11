@@ -32,7 +32,7 @@ jobs:
       - run: cabal update
       - run: cabal configure --enable-tests --enable-benchmarks
       - run: cabal build all
-      - run: PATH=/home/runner/.cabal/bin:$PATH cabal install && cabal build && cabal repl --build-depends=QuickCheck --build-depends=template-haskell --with-ghc=doctest
+      - run: cabal install && cabal build && PATH=/home/runner/.cabal/bin:$PATH cabal repl --build-depends=QuickCheck --build-depends=template-haskell --with-ghc=doctest
 
   success:
     needs: build
